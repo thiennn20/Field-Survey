@@ -1,0 +1,22 @@
+{
+  "name": "VKU Field Survey",
+  "short_name": "VKU Survey",
+  "description": "Ứng dụng khảo sát cơ sở vật chất khuôn viên trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn (VKU)",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#2563eb",
+  "background_color": "#f8fafc",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#ffffff">
+  <title>VKU Field Survey</title><link rel="manifest" href="manifest.json"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header"><div class="header-container">
+    <a class="brand" href="#" aria-label="VKU Field Survey - Trang chủ"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span><strong>VKU Field Survey</strong><small>Quản lý khảo sát CSVC</small></span></a>
+    <div class="header-actions"><span class="product-badge">Facility Management</span><button id="btn-install" class="btn-install hidden"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>Cài đặt ứng dụng</button></div>
+  </div></header>
+  <main class="container">
+    <section class="page-heading" aria-labelledby="page-title"><div><span class="eyebrow">Tổng quan</span><h1 id="page-title">Quản lý khảo sát cơ sở vật chất</h1><p>Theo dõi, cập nhật và quản lý tình trạng cơ sở vật chất tại VKU.</p></div><button class="btn-primary btn-create" type="button" data-focus-form><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Tạo khảo sát</button></section>
+    <section class="dashboard" aria-label="Thống kê khảo sát">
+      <article class="stat-card stat-total"><div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M9 5h6M9 9h6M9 13h4"/><rect x="5" y="3" width="14" height="18" rx="2"/></svg></div><div><div class="stat-title">Tổng khảo sát</div><div class="stat-value" id="total-count">0</div><p>Tổng bản ghi hiện có</p></div></article>
+      <article class="stat-card stat-success"><div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><div><div class="stat-title">Đã hoàn thành</div><div class="stat-value" id="completed-count">0</div><p>Khảo sát đã ghi nhận</p></div></article>
+      <article class="stat-card stat-warning"><div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><div class="stat-title">Chưa hoàn thành</div><div class="stat-value" id="pending-count">0</div><p>Khảo sát chưa ghi nhận</p></div></article>
+    </section>
+    <div class="main-content">
+      <section class="panel form-section" id="create-survey" aria-labelledby="form-title">
+        <div class="section-heading"><span class="section-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><div><h2 id="form-title">Tạo khảo sát mới</h2><p>Nhập thông tin khảo sát cơ sở vật chất.</p></div></div>
+        <form id="survey-form" novalidate>
+          <div class="form-group"><label for="fullName">Họ và tên <span class="required">*</span></label><input type="text" id="fullName" placeholder="Nhập họ và tên của bạn" autocomplete="name" aria-describedby="error-fullName"><span class="error-message" id="error-fullName">Vui lòng nhập họ tên</span></div>
+          <div class="form-group"><label for="area">Khu vực khảo sát <span class="required">*</span></label><select id="area" aria-describedby="error-area"><option value="">Chọn khu vực</option><option value="Tòa nhà A">Tòa nhà A</option><option value="Tòa nhà B">Tòa nhà B</option><option value="Thư viện">Thư viện</option><option value="Phòng học">Phòng học</option><option value="Phòng máy">Phòng máy</option><option value="Khuôn viên">Khuôn viên</option><option value="Nhà xe">Nhà xe</option><option value="Khu vực khác">Khu vực khác</option></select><span class="error-message" id="error-area">Vui lòng chọn khu vực</span></div>
+          <div class="form-group"><label for="category">Hạng mục cơ sở vật chất <span class="required">*</span></label><input type="text" id="category" placeholder="Ví dụ: Bàn ghế, máy chiếu..." aria-describedby="error-category"><span class="error-message" id="error-category">Vui lòng nhập hạng mục</span></div>
+          <div class="form-group"><label for="rating">Mức độ đánh giá <span class="required">*</span></label><select id="rating" aria-describedby="error-rating"><option value="">Chọn mức độ</option><option value="Rất tốt">Rất tốt</option><option value="Tốt">Tốt</option><option value="Trung bình">Trung bình</option><option value="Kém">Kém</option><option value="Rất kém">Rất kém</option></select><span class="error-message" id="error-rating">Vui lòng chọn mức độ đánh giá</span></div>
+          <div class="form-group"><label for="comment">Nội dung nhận xét <span class="required">*</span></label><textarea id="comment" rows="4" placeholder="Mô tả chi tiết tình trạng cơ sở vật chất..." aria-describedby="error-comment"></textarea><span class="error-message" id="error-comment">Vui lòng nhập nhận xét</span></div>
+          <button type="submit" class="btn-primary btn-submit"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Thêm khảo sát</button><div id="success-message" class="success-message hidden" role="status">Khảo sát đã được lưu thành công.</div>
+        </form>
+      </section>
+      <section class="panel list-section" aria-labelledby="list-title"><div class="list-header"><div><h2 id="list-title">Danh sách khảo sát</h2><p>Theo dõi các khảo sát đã được tạo.</p></div><label class="search-box"><span class="sr-only">Tìm kiếm khảo sát</span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="survey-search" type="search" placeholder="Tìm theo tên, khu vực, hạng mục..." autocomplete="off"></label></div><div id="survey-list" class="survey-list" aria-live="polite"></div></section>
+    </div>
+  </main>
+  <script src="db.js"></script><script src="main.js"></script>
+</body></html>
