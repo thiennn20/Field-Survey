@@ -1,0 +1,31 @@
+{
+  "name": "field-survey",
+  "version": "1.0.0",
+  "description": "Ứng dụng Progressive Web App (PWA) hỗ trợ khảo sát, theo dõi và quản lý tình trạng cơ sở vật chất tại Trường Đại học Công nghệ Thông tin và Truyền thông Việt – Hàn (VKU).",
+  "main": "main.js",
+  "scripts": {
+    "copy:www": "powershell -Command \"if (Test-Path www) { Remove-Item www -Recurse -Force }; New-Item -ItemType Directory -Path www/icons -Force | Out-Null; Copy-Item index.html,style.css,main.js,db.js,manifest.json,sw.js www/; Copy-Item icons/* www/icons/\"",
+    "cap:sync": "npm run copy:www && npx cap sync android",
+    "cap:build": "npm run cap:sync && cd android && .\\gradlew assembleDebug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiennn20/Field-Survey.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thiennn20/Field-Survey/issues"
+  },
+  "homepage": "https://github.com/thiennn20/Field-Survey#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/cli": "^8.5.1",
+    "@capacitor/core": "^8.5.1"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

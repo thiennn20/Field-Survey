@@ -62,7 +62,7 @@ document.addEventListener('click', event => {
 window.deleteSurvey = function(id) { if (!confirm('Bạn có chắc chắn muốn xóa khảo sát này?')) return; deleteSurveyFromDB(id).then(loadSurveys).catch(error => console.error('Lỗi khi xóa khảo sát:', error)); };
 function updateDashboard(total) { const completed = total; totalCount.textContent = total; completedCount.textContent = completed; pendingCount.textContent = Math.max(total - completed, 0); }
 function syncNow() { const MOCK_API = 'https://jsonplaceholder.typicode.com/posts'; getAllPendingSurveys().then(items => Promise.all(items.map(survey => fetch(MOCK_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(survey)}).then(response => response.json()).then(() => deletePendingSurvey(survey.id)).catch(error => console.warn('[Sync] Gửi thất bại:', error.message))))); }
-if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(error => console.error('[App] Đăng ký SW thất bại:', error)));
+if ('serviceWorker' in navigator && !window.Capacitor) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(error => console.error('[App] Đăng ký SW thất bại:', error)));
 let deferredPrompt; const installBtn = document.getElementById('btn-install');
 window.addEventListener('beforeinstallprompt', event => { event.preventDefault(); deferredPrompt = event; installBtn.classList.remove('hidden'); });
 installBtn.addEventListener('click', async () => { if (!deferredPrompt) return; deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; installBtn.classList.add('hidden'); });
